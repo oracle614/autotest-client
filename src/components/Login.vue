@@ -1,48 +1,39 @@
 <template>
-  <div class="container">
-        <div class="row">
-            <div class="col-md-12 page-header text-center"><h1>登 录</h1></div>
-        </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <form action="/" method="post" class="form-horizontal login-form" role="form" accept-charset="UTF-8">
-                    {{ form.hidden_tag() }}
-                    <div class="form-group">
-                        <div class="col-md-2">
-                            <label class="col-md-2 control-label iconfont icon-userName"></label>
-                        </div>
-                        <div class="col-md-10">
-                            {{ form.loginName(class="form-control", placeholder="Username") }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-2">
-                            <label class="col-md-2 control-label iconfont icon-password"></label>
-                        </div>
-                        <div class="col-md-10">
-                            {{ form.password(class="form-control", placeholder="Password") }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-12 checkbox">
-                            <label>{{ form.remember_me }} 记住我</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <input class="btn btn-login btn-info" id="submit" name="submit" type="submit" value="登 录">
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+  <div>
+    <h1>登 录</h1>
+    <form action="/" method="post" class="login-form" role="form" accept-charset="UTF-8">
+      <label class="col-md-2 control-label iconfont icon-userName"></label>
+      <input type="text" name="loginName" id="loginName" placeholder="Username">
+      <label class="col-md-2 control-label iconfont icon-password"></label>
+      <input type="password" name="password" id="password" placeholder="Password">
+      <input class="" id="submit" name="submit" type="submit" value="登 录">
+    </form>
+  </div>
 </template>
 
 <script>
-
 </script>
 
 <style lang="scss" scoped>
+.login-form {
+  background-color: #ffffff;
+  border: 1px solid #dedede; /*边框属性 宽度 样式 颜色*/
+  border-radius: 10px; /*角的形状*/
+  padding: 20px 20px 20px 20px;
+  margin: 0 auto;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27);
 
+  input[type='text'],
+  input[type='password'] {
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    width: 100%;
+  }
+
+  input[type='submit'] {
+    width: 100%;
+  }
+}
 </style>

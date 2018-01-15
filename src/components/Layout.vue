@@ -1,61 +1,49 @@
 <template>
   <el-container class="container">
-    <el-header class="header">
-      <el-row>
-        <el-col :span="24">
-          <div class="header-left pull-left">
-            <span>Logo用svg</span>
-            <span>Title用svg</span>
-          </div>
-          <div class="header-right pull-right">请登录</div>
-        </el-col>
-      </el-row>
+    <el-header class="headbar" height="64px">
+      <headbar></headbar>
     </el-header>
-
-    <el-container class="body">
-      <el-aside class="aside" width="200px">
-        <el-row>
-          <el-col :span="6">
-            <sidebar></sidebar>
-          </el-col>
-        </el-row>
+    <el-container>
+      <el-aside class="sidebar" width="200px">
+        <sidebar></sidebar>
       </el-aside>
-      <el-main class="main">Main</el-main>
+      <el-main class="body">
+        <router-view/>
+      </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script>
+import headbar from './Headbar'
 import sidebar from './Sidebar'
 
 export default {
   components: {
+    headbar,
     sidebar
   }
 }
 </script>
 
-<style  scoped lang="scss">
+<style lang="scss" scoped>
 .container {
   border: 1px solid;
+  height: 100%;
 }
-.header {
+.headbar {
   background-color: #333;
   color: #d9d9d9;
-  height: 64px;
   line-height: 64px;
 }
-.body {
-}
-.aside {
+.sidebar {
   background-color: #333;
   color: #d9d9d9;
   position: relative;
   max-width: 50px;
-  flex: 0 0 200px;
   width: 200px;
 }
-.main {
+.body {
   background: #ececec;
 }
 </style>

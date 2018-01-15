@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <router-view/>
+    <layout></layout>
   </div>
 </template>
 
 <script>
+import layout from './components/Layout'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: { layout }
 }
 </script>
 
@@ -15,6 +18,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: black;
+  height: 100%;
 }
 </style>
