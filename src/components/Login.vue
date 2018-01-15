@@ -2,9 +2,9 @@
   <div>
     <h1>登 录</h1>
     <form action="/" method="post" class="login-form" role="form" accept-charset="UTF-8">
-      <label class="col-md-2 control-label iconfont icon-userName"></label>
+      <label class="iconfont icon-username"></label>
       <input type="text" name="loginName" id="loginName" placeholder="Username">
-      <label class="col-md-2 control-label iconfont icon-password"></label>
+      <label class="iconfont icon-password"></label>
       <input type="password" name="password" id="password" placeholder="Password">
       <input class="" id="submit" name="submit" type="submit" value="登 录">
     </form>
