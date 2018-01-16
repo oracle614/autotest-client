@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  border: 1px solid;
+  // border: 1px solid;
   height: 100%;
 }
 .headbar {
@@ -44,6 +44,7 @@ export default {
   width: 200px;
 }
 .body {
+  padding: 0;
   background: #ececec;
 }
 </style>

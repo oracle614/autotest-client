@@ -1,29 +1,30 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <form class="script-form" action="{{ url_for('main.runjmter') }}" method="post">
-          <div class="function-button">
-            <button class="btn btn-default" type="button">执行</button>
-            <button class="btn btn-default" type="button">全选</button>
-            <button class="btn btn-default" type="reset">刷新</button>
-          </div>
-          <div class="script-tree">
-            <ul>
-              {% for dirname in dirs %}
-              <li>
-                <label>
-                  <input class="checkbox-inline" value="{{ dirname }}" type="checkbox" />
-                </label>
-                <button class="directory" type="button">
-                  <i class="iconfont icon-folder"></i> {{ dirname }}
-                </button>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </form>
-      </div>
-    </div>
+  <div class="script-tree">
+    {{scriptTree}}
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      scriptTree: ''
+    }
+  },
+  methods: {
+    getScriptTree: function() {
+      this.axios
+        .get('http://127.0.0.1:5000/api/jmeter/getscript')
+        .then(res => {
+          this.scriptTree = res.data
+        })
+        .catch(err => {
+          this.scriptTree = err
+        })
+    }
+  },
+  mounted: function() {
+    this.getScriptTree()
+  }
+}
+</script>
