@@ -1,22 +1,25 @@
 <template>
   <div class="script-tree">
-    {{scriptTree}}
+    <!-- <filedto class="parent-node" v-for="fileList in fileDTO" v-bind="fileList"></filedto> -->
+    <!-- <el-tree :props="fileDTO" :load="loadNode" lazy show-checkbox "></el-tree> -->
   </div>
 </template>
 
 <script>
+// import strToJson from '../assets/JsonUtil.js'
 export default {
   data() {
     return {
-      scriptTree: ''
+      fileDTO: ''
     }
   },
   methods: {
     getScriptTree: function() {
       this.axios
-        .get('http://127.0.0.1:5000/api/jmeter/getscript')
+        .get('/api/jmeter/getscript')
         .then(res => {
-          this.scriptTree = res.data
+          // this.fileDTO = strToJson(res.data)
+          this.fileDTO = res.data
         })
         .catch(err => {
           this.scriptTree = err
@@ -28,3 +31,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.parent-node {
+  text-align: left;
+  margin: 10px;
+}
+</style>
