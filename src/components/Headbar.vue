@@ -10,6 +10,13 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'headbar'
+}
+</script>
+
+
 <style lang="scss" scoped>
 a {
   color: #d9d9d9;

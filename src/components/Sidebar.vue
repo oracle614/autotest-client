@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  name: 'siderbar',
   data() {
     return {
       items: [
@@ -39,7 +40,6 @@ li {
   font-size: 25px;
 }
 .router-link-active {
-  
 }
 a {
   color: #d9d9d9;

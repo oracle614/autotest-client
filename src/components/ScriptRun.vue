@@ -1,18 +1,23 @@
 <template>
   <el-container class="script-run">
     <el-aside class="tree" width="400px">
-      <filetree></filetree>
+      <tree></tree>
     </el-aside>
-    <el-main class="log">这里是实时log</el-main>
+    <el-main class="log">
+      <real-time-log></real-time-log>
+    </el-main>
   </el-container>
 </template>
 
 <script>
-import filetree from './FileTree'
+import Tree from './Tree'
+import RealTimeLog from './RealTimeLog'
 
 export default {
+  name: 'script-run',
   components: {
-    filetree
+    Tree,
+    RealTimeLog
   }
 }
 </script>

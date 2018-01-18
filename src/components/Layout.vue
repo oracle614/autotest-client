@@ -15,13 +15,14 @@
 </template>
 
 <script>
-import headbar from './Headbar'
-import sidebar from './Sidebar'
+import Headbar from './Headbar'
+import Sidebar from './Sidebar'
 
 export default {
+  name: 'layout',
   components: {
-    headbar,
-    sidebar
+    Headbar,
+    Sidebar
   }
 }
 </script>
