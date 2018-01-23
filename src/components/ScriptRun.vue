@@ -24,14 +24,11 @@ export default {
 
 <style lang="scss" scoped>
 .script-run {
-  // border: 1px solid;
   height: 100%;
 }
 .tree {
   border: 1px solid;
-  // background-color: rgb(184, 11, 11);
 }
 .log {
-  // background-color: rgb(22, 170, 79);
 }
 </style>
