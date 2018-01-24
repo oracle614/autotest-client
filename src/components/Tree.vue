@@ -1,33 +1,18 @@
 <template>
-  <div class="script-tree">
-    <div class="top">
-      <el-input placeholder="Search" v-model="filterText"></el-input>
-    </div>
-    <div class="main"></div>
-    <el-tree :data="data" :props="props" show-checkbox default-expand-all :filter-node-method="filterNode" ref="tree"></el-tree>
-    <div class="bottom">
-      <el-button type="infor">执行</el-button>
-      <el-button type="infor">全选</el-button>
-      <el-button type="infor">反选</el-button>
-      <el-button type="infor">重置</el-button>
-    </div>
-  </div>
-  <!-- <el-container>
-    <el-header>
+  <el-container class="script-tree">
+    <el-header class="top" height="40px">
       <el-input placeholder="Search" v-model="filterText"></el-input>
     </el-header>
-    <el-main>
+    <el-main class="main">
       <el-tree :data="data" :props="props" show-checkbox default-expand-all :filter-node-method="filterNode" ref="tree"></el-tree>
     </el-main>
-    <el-footer>
-      <div class="buttons">
-      <el-button type="infor">执行</el-button>
-      <el-button type="infor">全选</el-button>
-      <el-button type="infor">反选</el-button>
-      <el-button type="infor">重置</el-button>
-    </div>
+    <el-footer class="bottom" height="40px">
+      <el-button class="button">执行</el-button>
+      <el-button class="button">全选</el-button>
+      <el-button class="button">反选</el-button>
+      <el-button class="button">重置</el-button>
     </el-footer>
-  </el-container> -->
+  </el-container>
 </template>
 
 <script>
@@ -75,14 +60,24 @@ export default {
 
 <style lang="scss" scoped>
 .script-tree {
+  height: 100%;
 }
 .top {
-  position: fixed;
-  top: 0;
+  height: 100%;
+  padding: 0;
+}
+.main {
+  height: 100%;
+  padding: 0;
 }
 .bottom {
-  background-color: #333;
-  position: fixed;
-  bottom: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 0;
+}
+.button {
+  flex: 1;
+  margin: 0;
 }
 </style>

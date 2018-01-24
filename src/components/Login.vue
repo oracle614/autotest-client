@@ -1,19 +1,37 @@
 <template>
   <div>
     <h1>登 录</h1>
-    <form action="/" method="post" class="login-form" role="form" accept-charset="UTF-8">
+    <!-- <form action="/" method="post" class="login-form" accept-charset="UTF-8">
       <label class="iconfont icon-username"></label>
       <input type="text" name="loginName" id="loginName" placeholder="Username">
       <label class="iconfont icon-password"></label>
       <input type="password" name="password" id="password" placeholder="Password">
       <input class="" id="submit" name="submit" type="submit" value="登 录">
-    </form>
+    </form> -->
+
+    <el-form ref="form" :model="form" label-width="60px" method="post" class="login-form">
+      <el-form-item label="用户名">
+        <el-input v-model="form.username" suffix-icon="iconfont icon-username"></el-input>
+      </el-form-item>
+      <el-form-item label="密码">
+        <el-input v-model="form.password" suffix-icon="iconfont icon-password"></el-input>
+      </el-form-item>
+    </el-form>
   </div>
+  
 </template>
 
 <script>
 export default {
-  name: 'login'
+  name: 'login',
+  data() {
+    return {
+      form: {
+        username: '',
+        password: ''
+      }
+    }
+  }
 }
 </script>
 

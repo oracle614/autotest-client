@@ -27,8 +27,9 @@ export default {
   height: 100%;
 }
 .tree {
-  border: 1px solid;
+  border: 1px solid #333;
 }
 .log {
+  border: 1px solid #333;
 }
 </style>
