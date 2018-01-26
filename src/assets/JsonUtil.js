@@ -1,13 +1,13 @@
 /**
- * String转为Json
+ * Json转对象
  */
-export default function strToJson(data) {
+export function toObj(data) {
   return JSON.parse(data)
 }
 
 /**
- * Json转为String
+ * 对象转Json
  */
-export function jsonToStr(data) {
+export function toJson(data) {
   return JSON.stringify(data)
 }
