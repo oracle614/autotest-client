@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <div class="header-left pull-left">
+  <div class="container heardbar-inner">
+    <div class="header-left">
       <span>Logo用svg</span>
       <span>Title用svg</span>
     </div>
-    <div class="header-right pull-right">
+    <div class="header-right">
       <router-link :to="{ name: 'Login'}">请登录</router-link>
     </div>
   </div>
@@ -21,5 +21,8 @@ export default {
 a {
   color: #d9d9d9;
   text-decoration: none;
+}
+.heardbar-inner{
+  justify-content:space-between;
 }
 </style>

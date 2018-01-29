@@ -1,31 +1,36 @@
 <template>
   <el-container class="script-tree">
-    <el-header class="top container" height="40px">
+    <el-header class="top1 container" height="40px">
       <el-input placeholder="脚本搜索" v-model="filterText"></el-input>
+    </el-header>
+
+    <form>
+    <el-header class="top2 container" height="40px">
       <el-select v-model="selectValue" filterable placeholder="测试环境">
         <el-option v-for="item in envs"
-                   :key="item.value"
-                   :label="item.label"
-                   :value="item.value">
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
         </el-option>
       </el-select>
     </el-header>
     <el-main class="main">
-      <el-tree :data="data"
-               :props="props"
-               node-key="name"
-               show-checkbox
-               default-expand-all
-               :filter-node-method="filterNode"
-               ref="tree">
+      <el-tree :data="data" 
+                :props="props" 
+                node-key="name"
+                show-checkbox 
+                default-expand-all 
+                :filter-node-method="filterNode" 
+                ref="tree">
       </el-tree>
     </el-main>
     <el-footer class="bottom container" height="40px">
-      <el-button class="button" @click="run">执行</el-button>
+      <el-button class="button" native-type="submit">执行</el-button>
       <el-button class="button" @click="setCheckeds">全选</el-button>
       <el-button class="button" @click="reverseChecked">反选</el-button>
       <el-button class="button" @click="resetChecked">重置</el-button>
     </el-footer>
+    </form>
   </el-container>
 </template>
 
@@ -70,16 +75,10 @@ export default {
       this.$refs.tree.setCheckedNodes(this.data)
     },
     reverseChecked() {
-      console.log('反选')
+      console.log(toJson(this.$refs.tree.getCheckedNodes()))
     },
     resetChecked() {
       this.$refs.tree.setCheckedNodes([])
-    },
-    run() {
-      console.log(
-        'getCheckedNodes()=' + toJson(this.$refs.tree.getCheckedNodes())
-      )
-      console.log(this.selectValue)
     },
     getScriptTree: function() {
       this.axios
@@ -102,7 +101,7 @@ export default {
 .script-tree {
   height: 100%;
 }
-.top {
+.top* {
   height: 100%;
   padding: 0;
 }
