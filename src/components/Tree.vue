@@ -2,7 +2,7 @@
   <el-container class="script-tree">
     <el-header class="top container" height="40px">
       <el-input placeholder="脚本搜索" v-model="filterText"></el-input>
-      <el-select v-model="selectValue" filterable placeholder="测试环境">
+      <el-select v-model="selectValue" filterable placeholder="执行环境">
         <el-option v-for="item in envs"
                    :key="item.value"
                    :label="item.label"
@@ -30,9 +30,8 @@
 </template>
 
 <script>
-import { toObj, toJson } from '../assets/JsonUtil.js'
-// import toObj from '../assets/JsonUtil.js'
-// import toJson from '../assets/JsonUtil.js'
+// import { toObj, toJson } from '../assets/JsonUtil.js'
+import { toObj } from '../assets/JsonUtil.js'
 export default {
   name: 'tree',
   data() {
@@ -53,7 +52,8 @@ export default {
           label: 'testNewGZ'
         }
       ],
-      selectValue: ''
+      selectValue: '',
+      socket: ''
     }
   },
   watch: {
@@ -76,23 +76,33 @@ export default {
       this.$refs.tree.setCheckedNodes([])
     },
     run() {
-      console.log(
-        'getCheckedNodes()=' + toJson(this.$refs.tree.getCheckedNodes())
-      )
-      console.log(this.selectValue)
+      var env = this.selectValue
+      var scriptList = this.getScriptList()
+      var params = new URLSearchParams()
+      params.append('env', env)
+      params.append('scriptList', scriptList)
+      this.axios.post('/api/jmeter/run', params).then(res => {
+        console.log(res)
+      })
     },
-    getScriptTree: function() {
-      this.axios
-        .get('/api/jmeter/getscript')
-        .then(res => {
-          this.data = toObj(res.data)
-        })
-        .catch(err => {
-          this.data = err
-        })
+    getScriptTree() {
+      this.axios.get('/api/jmeter/getscript').then(res => {
+        this.data = toObj(res.data)
+      })
+    },
+    getScriptList() {
+      var scriptList = []
+      var checkeds = this.$refs.tree.getCheckedNodes()
+      for (const i in checkeds) {
+        // if (checkeds[i].child == null) {
+        if (!checkeds[i].child) {
+          scriptList.push(checkeds[i])
+        }
+      }
+      return scriptList
     }
   },
-  mounted: function() {
+  mounted() {
     this.getScriptTree()
   }
 }
