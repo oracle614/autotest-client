@@ -46,6 +46,6 @@ export default {
 }
 .body {
   padding: 0;
-  background: #ececec;
+  // background: #ececec;
 }
 </style>
