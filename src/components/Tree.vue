@@ -32,6 +32,7 @@
 <script>
 // import { toObj, toJson } from '../assets/JsonUtil.js'
 import { toObj } from '../assets/JsonUtil.js'
+import { getSocket } from '../assets/SocketIo'
 export default {
   name: 'tree',
   data() {
@@ -76,14 +77,10 @@ export default {
       this.$refs.tree.setCheckedNodes([])
     },
     run() {
-      var env = this.selectValue
-      var scriptList = this.getScriptList()
-      var params = new URLSearchParams()
-      params.append('env', env)
-      params.append('scriptList', scriptList)
-      this.axios.post('/api/jmeter/run', params).then(res => {
-        console.log(res)
-      })
+      var params = { env: this.selectValue, scriptList: this.getScriptList() }
+      var socket = getSocket()
+      this.$store.commit('runStart')
+      socket.emit('sendtest', params)
     },
     getScriptTree() {
       this.axios.get('/api/jmeter/getscript').then(res => {
@@ -96,7 +93,7 @@ export default {
       for (const i in checkeds) {
         // if (checkeds[i].child == null) {
         if (!checkeds[i].child) {
-          scriptList.push(checkeds[i])
+          scriptList.push(checkeds[i]['name'])
         }
       }
       return scriptList

@@ -1,19 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getSocket } from '../assets/SocketIo'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    socketIO: null
+    isRunning: false
   },
   mutations: {
-    connect(state) {
-      state.socketIO = getSocket()
+    runStart(state) {
+      state.isRunning = true
     },
-    disconnect(state) {
-      state.socketIO.disconnect()
+    runCompleted(state) {
+      state.isRunning = false
     }
   }
 })
