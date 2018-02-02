@@ -83,16 +83,17 @@ export default {
       socket.emit('sendtest', params)
     },
     getScriptTree() {
-      this.axios.get('/api/jmeter/getscript').then(res => {
-        this.data = toObj(res.data)
-      })
+      this.axios
+        .get('/api/jmeter/gettree', { params: { dirname: 'inf' } })
+        .then(res => {
+          this.data = toObj(res.data)
+        })
     },
     getScriptList() {
       var scriptList = []
       var checkeds = this.$refs.tree.getCheckedNodes()
       for (const i in checkeds) {
-        // if (checkeds[i].child == null) {
-        if (!checkeds[i].child) {
+        if (checkeds[i].child == null) {
           scriptList.push(checkeds[i]['name'])
         }
       }

@@ -1,10 +1,6 @@
 <template>
   <div class="container">
     <p>{{logContent}}</p>
-    <div>
-      <!-- <el-button @click="connect">connect</el-button>
-      <el-button @click="disconnect">disconnect</el-button> -->
-    </div>
   </div>
 </template>
 
@@ -17,19 +13,7 @@ export default {
       logContent: ''
     }
   },
-  methods: {
-    // connect() {
-    //   this.socket = io.connect('http://127.0.0.1:5000/jmeter')
-    //   this.socket.emit('my event', { data: "I'm connected!" })
-    //   this.socket.on('my response', res => {
-    //     console.log(res)
-    //     this.logContent += res['data']
-    //   })
-    // },
-    // disconnect() {
-    //   this.socket.disconnect()
-    // }
-  },
+  methods: {},
   computed: {
     isRunning() {
       return this.$store.state.isRunning
@@ -38,12 +22,11 @@ export default {
   watch: {
     isRunning() {
       var socket = getSocket()
-      socket.on('send-clinet', res => {
-        console.log('send-clinet')
+      socket.on('realtimelog', res => {
         this.logContent += res
       })
       socket.on('disconnect', () => {
-        console.log('disconnect')
+        console.log('received disconnect')
         socket.disconnect()
       })
     }
