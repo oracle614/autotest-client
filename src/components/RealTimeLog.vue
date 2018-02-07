@@ -21,14 +21,17 @@ export default {
   },
   watch: {
     isRunning() {
-      var socket = getSocket()
-      socket.on('realtimelog', res => {
-        this.logContent += res
-      })
-      socket.on('disconnect', () => {
-        console.log('received disconnect')
-        socket.disconnect()
-      })
+      if (this.isRunning) {
+        var socket = getSocket()
+        socket.on('realtimelog', res => {
+          this.logContent += res
+        })
+        socket.on('disconnect', () => {
+          console.log('received disconnect')
+          socket.disconnect()
+          this.$store.commit('runCompleted')
+        })
+      }
     }
   }
 }
